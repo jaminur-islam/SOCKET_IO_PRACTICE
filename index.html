@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+  
+  </head>
+  <body>
+    <h1 id="text"></h1>
+    <div style="text-align: center">
+      <input type="text" id="name"/>
+    <button onclick="send()" > Submit </button>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+<script>
+  // var socket = io();
+    //=================== receive data to server=========================//
+ /*  socket.on("message", (msg)=>{
+    document.getElementById("myTime").innerHTML = Dat(msg * 1000)
+  }) */
+ /*  socket.on("myTime", (msg)=>{
+    document.getElementById("myTime").innerHTML = new Date(msg)
+  }) */
+
+  //=================== send data to server=========================//
+/*  const send = () =>{
+  const input = document.getElementById("name").value;
+  socket.send(input)
+ }
+  */
+  //=================== custom send data to server=========================//
+  /* const send = () =>{
+  const input = document.getElementById("name").value;
+  socket.emit("myClientData" , input)
+ } */
+
+ //============================== RECEIVE BROADCASTING MESSAGE ================================//
+/*  socket.on("MyBroadcasting" , (msg)=>{
+  document.getElementById("text").innerHTML = msg
+ }) */
+
+ //=============================== BROADCASTING GROUPING RECEIVE MESSAGE ==================//
+ const socket = io("/sell");
+ socket.on("myEvent", (msg)=>{
+  document.getElementById("text").innerHTML = msg
+ })
+</script>
+  </body>
+</html>
